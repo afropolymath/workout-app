@@ -1,5 +1,5 @@
 {
   "elm.makeCommand": "elm make",
-  "elm.makeOutput": "dist/main.js",
+  "elm.makeOutput": "www/js/app.js",
   "editor.formatOnSave": true
 }
