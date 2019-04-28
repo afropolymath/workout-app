@@ -1,4 +1,4 @@
-module SharedStyles exposing (applicationModuleStyle, defaultButtonStyle, flexContainer, fullWidthInputFieldStyle, genericContainerStyle, theme)
+module SharedStyles exposing (applicationModuleStyle, cardContainerStyle, defaultButtonStyle, flexContainer, fullWidthInputFieldStyle, genericContainerStyle, secondaryCardContainerStyle, tableHeaderStyle, theme)
 
 import Css exposing (..)
 import Css.Transitions exposing (transition)
@@ -20,6 +20,10 @@ theme =
     , cardContentPadding = px 7
     , looseCardContentPadding = px 15
     , containerWidth = px 1024
+    , cardBackgroundColor = hex "4D4D4D"
+    , cardTextColor = hex "DDD"
+    , cardHoverBorderColor = hex "C1C1C1"
+    , applicationShadows = boxShadow5 (px 1) (px 5) (px 7) (px 0) (rgba 0 0 0 0.3)
     }
 
 
@@ -76,6 +80,30 @@ genericContainerStyle =
         [ width (pct 100)
         , maxWidth theme.containerWidth
         , margin2 (px 0) auto
+        ]
+
+
+cardContainerStyle =
+    Css.batch
+        [ backgroundColor theme.lightBackground
+        , position relative
+        , height (pct 100)
+        ]
+
+
+secondaryCardContainerStyle =
+    Css.batch
+        [ backgroundColor theme.secondaryColor
+        , theme.applicationShadows
+        ]
+
+
+tableHeaderStyle =
+    Css.batch
+        [ padding2 (px 7) (px 0)
+        , theme.applicationFont
+        , fontSize (Css.em 1)
+        , textAlign left
         ]
 
 

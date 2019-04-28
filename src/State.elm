@@ -1,16 +1,38 @@
-module State exposing (init, subscriptions, update)
+module State exposing (init, subscriptions, updateWithStorage)
 
 import AppTypes exposing (..)
+import Ports exposing (..)
 
 
-init : () -> ( Model, Cmd Msg )
-init _ =
-    ( Model [] NoWorkoutSelected, Cmd.none )
+init : Maybe (List WorkoutRec) -> ( Model, Cmd Msg )
+init flags =
+    let
+        workouts =
+            case flags of
+                Just cachedWorkouts ->
+                    cachedWorkouts
+
+                Nothing ->
+                    []
+    in
+    ( Model workouts NoWorkoutSelected, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
+
+
+updateWithStorage : Msg -> Model -> ( Model, Cmd Msg )
+updateWithStorage msg model =
+    let
+        ( newModel, commands ) =
+            update msg model
+
+        workouts =
+            newModel.workouts
+    in
+    ( newModel, Cmd.batch [ commands, cacheWorkouts workouts ] )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -19,8 +41,8 @@ update msg model =
         DisplayAll ->
             ( { model | currentWorkout = NoWorkoutSelected }, Cmd.none )
 
-        DisplayOne workout ->
-            ( { model | currentWorkout = workout }, Cmd.none )
+        DisplayOne workoutRec ->
+            ( { model | currentWorkout = CreatedWorkout workoutRec }, Cmd.none )
 
         CreateWorkout ->
             ( { model | currentWorkout = emptyWorkout }, Cmd.none )
@@ -31,10 +53,31 @@ update msg model =
         SaveWorkout workoutRec ->
             ( { model | workouts = addWorkout workoutRec model.workouts, currentWorkout = NoWorkoutSelected }, Cmd.none )
 
+        ToggleWorkoutListItem itemIndex ->
+            ( { model | workouts = toggleWorkout itemIndex model.workouts }, Cmd.none )
+
+
+toggleWorkout : Int -> List WorkoutRec -> List WorkoutRec
+toggleWorkout workoutIndex workoutList =
+    let
+        toggleItem index item =
+            if index == workoutIndex then
+                { item | isOpen = not item.isOpen }
+
+            else
+                item
+    in
+    List.indexedMap toggleItem workoutList
+
+
+emptyExercise : Exercise
+emptyExercise =
+    Exercise "" "" 0 0 0 "kg" True True
+
 
 emptyWorkout : Workout
 emptyWorkout =
-    NewWorkout (WorkoutRec "" [ Exercise "" "" 0 0 0 "kg" True True ])
+    NewWorkout (WorkoutRec "" [ emptyExercise ] False)
 
 
 spliceAt : Int -> List Exercise -> List Exercise
@@ -75,13 +118,13 @@ updateWorkout currentWorkout updateAction fieldValue =
             in
             case List.length exercises - List.length nonEmptyExercises of
                 0 ->
-                    exercises ++ [ Exercise "" "" 0 0 0 "kg" True True ]
+                    exercises ++ [ emptyExercise ]
 
                 1 ->
                     exercises
 
                 2 ->
-                    nonEmptyExercises ++ [ Exercise "" "" 0 0 0 "kg" True True ]
+                    nonEmptyExercises ++ [ emptyExercise ]
 
                 _ ->
                     filteredList

@@ -1,0 +1,5 @@
+{
+  "elm.makeCommand": "elm make",
+  "elm.makeOutput": "dist/main.js",
+  "editor.formatOnSave": true
+}

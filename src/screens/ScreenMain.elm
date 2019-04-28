@@ -69,11 +69,11 @@ view model =
     div [ css [ applicationContainerStyle ] ]
         [ renderApplicationHeader
         , case model.currentWorkout of
-            CreatedWorkout workout ->
-                renderSingleWorkout workout
+            CreatedWorkout workoutRec ->
+                renderSingleWorkout workoutRec
 
-            NewWorkout workout ->
-                renderWorkoutCreationForm workout
+            NewWorkout workoutRec ->
+                renderWorkoutCreationForm workoutRec
 
             NoWorkoutSelected ->
                 renderWorkoutList model.workouts

@@ -16,6 +16,7 @@ type alias Exercise =
 type alias WorkoutRec =
     { name : String
     , exercises : List Exercise
+    , isOpen : Bool
     }
 
 
@@ -32,10 +33,11 @@ type UpdateCurrentWorkoutAction
 
 type Msg
     = DisplayAll
-    | DisplayOne Workout
+    | DisplayOne WorkoutRec
     | CreateWorkout
     | UpdateCurrentWorkout UpdateCurrentWorkoutAction String
     | SaveWorkout WorkoutRec
+    | ToggleWorkoutListItem Int
 
 
 type alias Model =

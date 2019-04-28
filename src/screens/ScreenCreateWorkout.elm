@@ -10,17 +10,6 @@ import Html.Styled.Events exposing (onClick, onInput)
 import SharedStyles exposing (..)
 
 
-cardContainerStyle =
-    Css.batch
-        [ backgroundColor theme.lightBackground
-        , position absolute
-        , left (px 0)
-        , right (px 0)
-        , bottom theme.applicationGutter
-        , top theme.applicationGutter
-        ]
-
-
 fullWidthCardInputFieldStyle =
     Css.batch
         [ fullWidthInputFieldStyle
@@ -48,15 +37,6 @@ cardFooterStyle =
         , right (px 0)
         , bottom (px 0)
         , padding theme.applicationGutter
-        ]
-
-
-exerciseTableHeaderStyle =
-    Css.batch
-        [ padding2 (px 7) (px 0)
-        , theme.applicationFont
-        , fontSize (Css.em 1)
-        , textAlign left
         ]
 
 
@@ -96,16 +76,16 @@ renderWorkoutCreationForm : WorkoutRec -> Html Msg
 renderWorkoutCreationForm workoutRec =
     [ div [ css [ genericContainerStyle, cardContainerStyle ] ]
         [ div []
-            [ input [ css [ fullWidthCardInputFieldStyle ], type_ "text", placeholder "Workout name..." ] []
+            [ input [ css [ fullWidthCardInputFieldStyle ], type_ "text", placeholder "Workout name...", onInput (UpdateCurrentWorkout UpdateCurrentWorkoutName) ] []
             ]
         , div [ css [ cardTableContainerStyle ] ]
             [ Html.Styled.table [ css [ width (pct 100), borderCollapse collapse ] ]
                 [ thead []
                     [ tr []
-                        [ th [ css [ exerciseTableHeaderStyle, width (pct 50) ] ] [ text "Exercise name" ]
-                        , th [ css [ exerciseTableHeaderStyle ] ] [ text "Reps" ]
-                        , th [ css [ exerciseTableHeaderStyle ] ] [ text "Sets" ]
-                        , th [ css [ exerciseTableHeaderStyle ] ] [ text "Weight" ]
+                        [ th [ css [ tableHeaderStyle, width (pct 50) ] ] [ text "Exercise name" ]
+                        , th [ css [ tableHeaderStyle ] ] [ text "Sets" ]
+                        , th [ css [ tableHeaderStyle ] ] [ text "Reps" ]
+                        , th [ css [ tableHeaderStyle ] ] [ text "Weight" ]
                         ]
                     ]
                 , tbody [] (List.indexedMap renderExerciseItemRow workoutRec.exercises)
