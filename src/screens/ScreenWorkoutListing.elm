@@ -13,7 +13,7 @@ import SharedStyles exposing (..)
 workoutListItem =
     Css.batch
         [ backgroundColor theme.cardBackgroundColor
-        , padding2 (px 0) theme.looseCardContentPadding
+        , padding2 (px 0) theme.cardContentPadding
         , border3 (px 1) solid theme.lightBorderColor
         , marginBottom (px 17)
         , hover
@@ -102,7 +102,7 @@ renderWorkoutList workoutList =
     let
         displayContent =
             if List.length workoutList > 0 then
-                List.indexedMap renderWorkoutListItem workoutList
+                List.reverse (List.indexedMap renderWorkoutListItem workoutList)
 
             else
                 [ p [] [ text "There are no workouts here yet" ] ]
@@ -122,8 +122,8 @@ renderWorkoutListItem workoutItemIndex workoutRec =
             List.foldr (+) 0 (List.map (\ex -> ex.reps * ex.sets) workoutRec.exercises)
     in
     div [ css [ workoutListItem ] ]
-        [ div [ css [ workoutListItemHeader ], onClick (ToggleWorkoutListItem workoutItemIndex) ]
-            [ h2 [ css [ workoutListItemTitle workoutRec.isOpen ] ] [ text workoutRec.name ]
+        [ div [ css [ workoutListItemHeader ] ]
+            [ h2 [ css [ workoutListItemTitle workoutRec.isOpen ], onClick (ToggleWorkoutListItem workoutItemIndex) ] [ text workoutRec.name ]
             , a [ css [ workoutListItemLink ], onClick (DisplayOne workoutRec) ] [ text "View workout" ]
             ]
         , Html.Styled.table [ css [ workoutListItemMetricsTable workoutRec.isOpen ] ]

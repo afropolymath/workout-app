@@ -13,7 +13,7 @@ import SharedStyles exposing (..)
 fullWidthCardInputFieldStyle =
     Css.batch
         [ fullWidthInputFieldStyle
-        , padding2 (px 15) (px 20)
+        , padding2 (px 15) theme.applicationContentPaddingHorizontal
         , fontSize (Css.em 1.4)
         , borderBottom3 (px 1) solid theme.lighterBorderColor
         , focus
@@ -25,7 +25,7 @@ fullWidthCardInputFieldStyle =
 
 cardTableContainerStyle =
     Css.batch
-        [ padding (px 15)
+        [ padding theme.applicationContentPaddingHorizontal
         ]
 
 
@@ -36,7 +36,7 @@ cardFooterStyle =
         , left (px 0)
         , right (px 0)
         , bottom (px 0)
-        , padding theme.applicationGutter
+        , padding theme.applicationContentPaddingHorizontal
         ]
 
 

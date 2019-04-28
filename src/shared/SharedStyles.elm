@@ -17,13 +17,16 @@ theme =
     , lightBorderColor = hex "848484"
     , lighterBorderColor = hex "D2D2D2"
     , darkBorderColor = hex "464646"
-    , cardContentPadding = px 7
+    , cardContentPadding = px 10
     , looseCardContentPadding = px 15
     , containerWidth = px 1024
     , cardBackgroundColor = hex "4D4D4D"
     , cardTextColor = hex "DDD"
     , cardHoverBorderColor = hex "C1C1C1"
     , applicationShadows = boxShadow5 (px 1) (px 5) (px 7) (px 0) (rgba 0 0 0 0.3)
+    , applicationContentPaddingVertical = px 20
+    , applicationContentPaddingHorizontal = px 20
+    , applicationBorderRadius = px 4
     }
 
 

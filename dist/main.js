@@ -5097,6 +5097,9 @@ var rtfeldman$elm_css$Css$rgba = F4(
 	});
 var author$project$SharedStyles$theme = {
 	applicationBackground: rtfeldman$elm_css$Css$hex('242424'),
+	applicationBorderRadius: rtfeldman$elm_css$Css$px(4),
+	applicationContentPaddingHorizontal: rtfeldman$elm_css$Css$px(20),
+	applicationContentPaddingVertical: rtfeldman$elm_css$Css$px(20),
 	applicationFont: rtfeldman$elm_css$Css$fontFamilies(
 		_List_fromArray(
 			['Avenir Next', 'Arial', 'sans-serif'])),
@@ -5109,7 +5112,7 @@ var author$project$SharedStyles$theme = {
 		rtfeldman$elm_css$Css$px(0),
 		A4(rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.3)),
 	cardBackgroundColor: rtfeldman$elm_css$Css$hex('4D4D4D'),
-	cardContentPadding: rtfeldman$elm_css$Css$px(7),
+	cardContentPadding: rtfeldman$elm_css$Css$px(10),
 	cardFooterBackground: rtfeldman$elm_css$Css$hex('D5D5D5'),
 	cardHoverBorderColor: rtfeldman$elm_css$Css$hex('C1C1C1'),
 	cardTextColor: rtfeldman$elm_css$Css$hex('DDD'),
@@ -5148,13 +5151,12 @@ var author$project$ScreenCreateWorkout$cardFooterStyle = rtfeldman$elm_css$Css$b
 			rtfeldman$elm_css$Css$px(0)),
 			rtfeldman$elm_css$Css$bottom(
 			rtfeldman$elm_css$Css$px(0)),
-			rtfeldman$elm_css$Css$padding(author$project$SharedStyles$theme.applicationGutter)
+			rtfeldman$elm_css$Css$padding(author$project$SharedStyles$theme.applicationContentPaddingHorizontal)
 		]));
 var author$project$ScreenCreateWorkout$cardTableContainerStyle = rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
 		[
-			rtfeldman$elm_css$Css$padding(
-			rtfeldman$elm_css$Css$px(15))
+			rtfeldman$elm_css$Css$padding(author$project$SharedStyles$theme.applicationContentPaddingHorizontal)
 		]));
 var rtfeldman$elm_css$Css$block = {display: rtfeldman$elm_css$Css$Structure$Compatible, value: 'block'};
 var rtfeldman$elm_css$Css$prop3 = F4(
@@ -5237,7 +5239,7 @@ var author$project$ScreenCreateWorkout$fullWidthCardInputFieldStyle = rtfeldman$
 			A2(
 			rtfeldman$elm_css$Css$padding2,
 			rtfeldman$elm_css$Css$px(15),
-			rtfeldman$elm_css$Css$px(20)),
+			author$project$SharedStyles$theme.applicationContentPaddingHorizontal),
 			rtfeldman$elm_css$Css$fontSize(
 			rtfeldman$elm_css$Css$em(1.4)),
 			A3(
@@ -8408,6 +8410,88 @@ var author$project$ScreenMain$renderApplicationHeader = A2(
 						]))
 				]))
 		]));
+var author$project$AppTypes$DisplayAll = {$: 'DisplayAll'};
+var rtfeldman$elm_css$Css$inlineBlock = {display: rtfeldman$elm_css$Css$Structure$Compatible, value: 'inline-block'};
+var rtfeldman$elm_css$Css$marginRight = rtfeldman$elm_css$Css$prop1('margin-right');
+var author$project$ScreenSingleWorkout$iconLinkStyle = rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			rtfeldman$elm_css$Css$display(rtfeldman$elm_css$Css$inlineBlock),
+			rtfeldman$elm_css$Css$width(
+			rtfeldman$elm_css$Css$px(30)),
+			rtfeldman$elm_css$Css$height(
+			rtfeldman$elm_css$Css$px(24)),
+			rtfeldman$elm_css$Css$color(
+			rtfeldman$elm_css$Css$hex('FFF')),
+			rtfeldman$elm_css$Css$cursor(rtfeldman$elm_css$Css$pointer),
+			rtfeldman$elm_css$Css$marginRight(
+			rtfeldman$elm_css$Css$px(8))
+		]));
+var rtfeldman$elm_css$Css$borderRadius = rtfeldman$elm_css$Css$prop1('border-radius');
+var rtfeldman$elm_css$Css$inlineFlex = {display: rtfeldman$elm_css$Css$Structure$Compatible, value: 'inline-flex'};
+var rtfeldman$elm_css$Css$marginLeft = rtfeldman$elm_css$Css$prop1('margin-left');
+var rtfeldman$elm_css$Css$Preprocess$NestSnippet = F2(
+	function (a, b) {
+		return {$: 'NestSnippet', a: a, b: b};
+	});
+var rtfeldman$elm_css$Css$Structure$Descendant = {$: 'Descendant'};
+var rtfeldman$elm_css$Css$Global$descendants = rtfeldman$elm_css$Css$Preprocess$NestSnippet(rtfeldman$elm_css$Css$Structure$Descendant);
+var rtfeldman$elm_css$Css$Structure$TypeSelector = function (a) {
+	return {$: 'TypeSelector', a: a};
+};
+var rtfeldman$elm_css$Css$Global$typeSelector = F2(
+	function (selectorStr, styles) {
+		var sequence = A2(
+			rtfeldman$elm_css$Css$Structure$TypeSelectorSequence,
+			rtfeldman$elm_css$Css$Structure$TypeSelector(selectorStr),
+			_List_Nil);
+		var sel = A3(rtfeldman$elm_css$Css$Structure$Selector, sequence, _List_Nil, elm$core$Maybe$Nothing);
+		return rtfeldman$elm_css$Css$Preprocess$Snippet(
+			_List_fromArray(
+				[
+					rtfeldman$elm_css$Css$Preprocess$StyleBlockDeclaration(
+					A3(rtfeldman$elm_css$Css$Preprocess$StyleBlock, sel, _List_Nil, styles))
+				]));
+	});
+var author$project$ScreenSingleWorkout$outlineLinkStyle = rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			rtfeldman$elm_css$Css$display(rtfeldman$elm_css$Css$inlineFlex),
+			rtfeldman$elm_css$Css$color(
+			rtfeldman$elm_css$Css$hex('FFF')),
+			author$project$SharedStyles$theme.applicationFont,
+			rtfeldman$elm_css$Css$alignItems(rtfeldman$elm_css$Css$center),
+			A3(
+			rtfeldman$elm_css$Css$border3,
+			rtfeldman$elm_css$Css$px(1),
+			rtfeldman$elm_css$Css$solid,
+			rtfeldman$elm_css$Css$hex('FFF')),
+			rtfeldman$elm_css$Css$borderRadius(author$project$SharedStyles$theme.applicationBorderRadius),
+			A2(
+			rtfeldman$elm_css$Css$padding2,
+			rtfeldman$elm_css$Css$px(6),
+			rtfeldman$elm_css$Css$px(8)),
+			rtfeldman$elm_css$Css$Global$descendants(
+			_List_fromArray(
+				[
+					A2(
+					rtfeldman$elm_css$Css$Global$typeSelector,
+					'span',
+					_List_fromArray(
+						[
+							rtfeldman$elm_css$Css$marginLeft(
+							rtfeldman$elm_css$Css$px(10))
+						])),
+					A2(
+					rtfeldman$elm_css$Css$Global$typeSelector,
+					'i',
+					_List_fromArray(
+						[
+							rtfeldman$elm_css$Css$fontSize(
+							rtfeldman$elm_css$Css$px(20))
+						]))
+				]))
+		]));
 var rtfeldman$elm_css$Css$paddingBottom = rtfeldman$elm_css$Css$prop1('padding-bottom');
 var rtfeldman$elm_css$Css$paddingRight = rtfeldman$elm_css$Css$prop1('padding-right');
 var rtfeldman$elm_css$Css$paddingTop = rtfeldman$elm_css$Css$prop1('padding-top');
@@ -8417,9 +8501,9 @@ var author$project$ScreenSingleWorkout$tableFieldStyle = rtfeldman$elm_css$Css$b
 			rtfeldman$elm_css$Css$paddingRight(
 			rtfeldman$elm_css$Css$px(10)),
 			rtfeldman$elm_css$Css$paddingTop(
-			rtfeldman$elm_css$Css$px(4)),
+			rtfeldman$elm_css$Css$px(7)),
 			rtfeldman$elm_css$Css$paddingBottom(
-			rtfeldman$elm_css$Css$px(4))
+			rtfeldman$elm_css$Css$px(7))
 		]));
 var author$project$ScreenSingleWorkout$renderExerciseItemRow = F2(
 	function (exerciseIndex, exercise) {
@@ -8481,26 +8565,43 @@ var author$project$ScreenSingleWorkout$renderExerciseItemRow = F2(
 						]))
 				]));
 	});
-var author$project$ScreenSingleWorkout$singleWorkoutTitleStyle = rtfeldman$elm_css$Css$batch(
+var author$project$ScreenSingleWorkout$workoutDetailsStyle = rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			A2(
+			rtfeldman$elm_css$Css$padding2,
+			rtfeldman$elm_css$Css$px(15),
+			author$project$SharedStyles$theme.applicationContentPaddingHorizontal),
+			author$project$SharedStyles$theme.applicationFont,
+			rtfeldman$elm_css$Css$color(
+			rtfeldman$elm_css$Css$hex('FFF'))
+		]));
+var author$project$ScreenSingleWorkout$workoutTitleStyle = rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			rtfeldman$elm_css$Css$displayFlex,
+			rtfeldman$elm_css$Css$alignItems(rtfeldman$elm_css$Css$center),
+			A2(
+			rtfeldman$elm_css$Css$padding2,
+			rtfeldman$elm_css$Css$px(15),
+			author$project$SharedStyles$theme.applicationContentPaddingHorizontal),
+			A3(
+			rtfeldman$elm_css$Css$borderBottom3,
+			rtfeldman$elm_css$Css$px(1),
+			rtfeldman$elm_css$Css$solid,
+			rtfeldman$elm_css$Css$hex('FF895B'))
+		]));
+var author$project$ScreenSingleWorkout$workoutTitleTextStyle = rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
 		[
 			author$project$SharedStyles$theme.applicationFont,
-			rtfeldman$elm_css$Css$padding(
-			rtfeldman$elm_css$Css$px(15)),
+			rtfeldman$elm_css$Css$flexGrow(
+			rtfeldman$elm_css$Css$num(1)),
 			rtfeldman$elm_css$Css$margin(
 			rtfeldman$elm_css$Css$px(0)),
 			rtfeldman$elm_css$Css$color(
 			rtfeldman$elm_css$Css$hex('FFF')),
 			rtfeldman$elm_css$Css$fontWeight(rtfeldman$elm_css$Css$normal)
-		]));
-var author$project$ScreenSingleWorkout$workoutDetailsStyle = rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			rtfeldman$elm_css$Css$padding(
-			rtfeldman$elm_css$Css$px(15)),
-			author$project$SharedStyles$theme.applicationFont,
-			rtfeldman$elm_css$Css$color(
-			rtfeldman$elm_css$Css$hex('FFF'))
 		]));
 var author$project$SharedStyles$secondaryCardContainerStyle = rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
@@ -8508,7 +8609,11 @@ var author$project$SharedStyles$secondaryCardContainerStyle = rtfeldman$elm_css$
 			rtfeldman$elm_css$Css$backgroundColor(author$project$SharedStyles$theme.secondaryColor),
 			author$project$SharedStyles$theme.applicationShadows
 		]));
+var rtfeldman$elm_css$Html$Styled$a = rtfeldman$elm_css$Html$Styled$node('a');
 var rtfeldman$elm_css$Html$Styled$h2 = rtfeldman$elm_css$Html$Styled$node('h2');
+var rtfeldman$elm_css$Html$Styled$i = rtfeldman$elm_css$Html$Styled$node('i');
+var rtfeldman$elm_css$Html$Styled$span = rtfeldman$elm_css$Html$Styled$node('span');
+var rtfeldman$elm_css$Html$Styled$Attributes$class = rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('className');
 var author$project$ScreenSingleWorkout$renderSingleWorkout = function (workoutRec) {
 	return A2(
 		rtfeldman$elm_css$Html$Styled$div,
@@ -8531,16 +8636,77 @@ var author$project$ScreenSingleWorkout$renderSingleWorkout = function (workoutRe
 				_List_fromArray(
 					[
 						A2(
-						rtfeldman$elm_css$Html$Styled$h2,
+						rtfeldman$elm_css$Html$Styled$div,
 						_List_fromArray(
 							[
 								rtfeldman$elm_css$Html$Styled$Attributes$css(
 								_List_fromArray(
-									[author$project$ScreenSingleWorkout$singleWorkoutTitleStyle]))
+									[author$project$ScreenSingleWorkout$workoutTitleStyle]))
 							]),
 						_List_fromArray(
 							[
-								rtfeldman$elm_css$Html$Styled$text(workoutRec.name)
+								A2(
+								rtfeldman$elm_css$Html$Styled$a,
+								_List_fromArray(
+									[
+										rtfeldman$elm_css$Html$Styled$Attributes$css(
+										_List_fromArray(
+											[author$project$ScreenSingleWorkout$iconLinkStyle])),
+										rtfeldman$elm_css$Html$Styled$Events$onClick(author$project$AppTypes$DisplayAll)
+									]),
+								_List_fromArray(
+									[
+										A2(
+										rtfeldman$elm_css$Html$Styled$i,
+										_List_fromArray(
+											[
+												rtfeldman$elm_css$Html$Styled$Attributes$class('material-icons')
+											]),
+										_List_fromArray(
+											[
+												rtfeldman$elm_css$Html$Styled$text('arrow_back')
+											]))
+									])),
+								A2(
+								rtfeldman$elm_css$Html$Styled$h2,
+								_List_fromArray(
+									[
+										rtfeldman$elm_css$Html$Styled$Attributes$css(
+										_List_fromArray(
+											[author$project$ScreenSingleWorkout$workoutTitleTextStyle]))
+									]),
+								_List_fromArray(
+									[
+										rtfeldman$elm_css$Html$Styled$text(workoutRec.name)
+									])),
+								A2(
+								rtfeldman$elm_css$Html$Styled$a,
+								_List_fromArray(
+									[
+										rtfeldman$elm_css$Html$Styled$Attributes$css(
+										_List_fromArray(
+											[author$project$ScreenSingleWorkout$outlineLinkStyle]))
+									]),
+								_List_fromArray(
+									[
+										A2(
+										rtfeldman$elm_css$Html$Styled$i,
+										_List_fromArray(
+											[
+												rtfeldman$elm_css$Html$Styled$Attributes$class('material-icons ')
+											]),
+										_List_fromArray(
+											[
+												rtfeldman$elm_css$Html$Styled$text('edit')
+											])),
+										A2(
+										rtfeldman$elm_css$Html$Styled$span,
+										_List_Nil,
+										_List_fromArray(
+											[
+												rtfeldman$elm_css$Html$Styled$text('Edit workout')
+											]))
+									]))
 							])),
 						A2(
 						rtfeldman$elm_css$Html$Styled$div,
@@ -8690,7 +8856,7 @@ var author$project$ScreenWorkoutListing$workoutListItem = rtfeldman$elm_css$Css$
 			A2(
 			rtfeldman$elm_css$Css$padding2,
 			rtfeldman$elm_css$Css$px(0),
-			author$project$SharedStyles$theme.looseCardContentPadding),
+			author$project$SharedStyles$theme.cardContentPadding),
 			A3(
 			rtfeldman$elm_css$Css$border3,
 			rtfeldman$elm_css$Css$px(1),
@@ -8854,7 +9020,6 @@ var author$project$ScreenWorkoutListing$workoutListItemTitle = function (isOpen)
 					]))
 			]));
 };
-var rtfeldman$elm_css$Html$Styled$a = rtfeldman$elm_css$Html$Styled$node('a');
 var author$project$ScreenWorkoutListing$renderWorkoutListItem = F2(
 	function (workoutItemIndex, workoutRec) {
 		var totalReps = A3(
@@ -8884,9 +9049,7 @@ var author$project$ScreenWorkoutListing$renderWorkoutListItem = F2(
 						[
 							rtfeldman$elm_css$Html$Styled$Attributes$css(
 							_List_fromArray(
-								[author$project$ScreenWorkoutListing$workoutListItemHeader])),
-							rtfeldman$elm_css$Html$Styled$Events$onClick(
-							author$project$AppTypes$ToggleWorkoutListItem(workoutItemIndex))
+								[author$project$ScreenWorkoutListing$workoutListItemHeader]))
 						]),
 					_List_fromArray(
 						[
@@ -8898,7 +9061,9 @@ var author$project$ScreenWorkoutListing$renderWorkoutListItem = F2(
 									_List_fromArray(
 										[
 											author$project$ScreenWorkoutListing$workoutListItemTitle(workoutRec.isOpen)
-										]))
+										])),
+									rtfeldman$elm_css$Html$Styled$Events$onClick(
+									author$project$AppTypes$ToggleWorkoutListItem(workoutItemIndex))
 								]),
 							_List_fromArray(
 								[
@@ -8964,7 +9129,8 @@ var author$project$ScreenWorkoutListing$renderWorkoutListItem = F2(
 	});
 var rtfeldman$elm_css$Html$Styled$p = rtfeldman$elm_css$Html$Styled$node('p');
 var author$project$ScreenWorkoutListing$renderWorkoutList = function (workoutList) {
-	var displayContent = (elm$core$List$length(workoutList) > 0) ? A2(elm$core$List$indexedMap, author$project$ScreenWorkoutListing$renderWorkoutListItem, workoutList) : _List_fromArray(
+	var displayContent = (elm$core$List$length(workoutList) > 0) ? elm$core$List$reverse(
+		A2(elm$core$List$indexedMap, author$project$ScreenWorkoutListing$renderWorkoutListItem, workoutList)) : _List_fromArray(
 		[
 			A2(
 			rtfeldman$elm_css$Html$Styled$p,
